@@ -7,7 +7,19 @@ import {Staking} from "../src/StakingContract.sol";
 contract StakingContractTest is Test {
     Staking public staking;
 
-    //function setUp() public {
-    //staking = new Staking();
-    //}
+    function setUp() public {
+        staking = new Staking();
+    }
+
+    function testsetRewardsDuration() public {
+        staking.rewards();
+        staking.duration = 10;
+        vm.expectRevert(staking.setRewardsDuration.selector);
+    }
+
+    function testRewardAmount() public {
+        staking.rewardRate();
+        staking.updatedAt = 4;
+        vm.expectRevert(staking.notifyRewardAmount.selector);
+    }
 }
