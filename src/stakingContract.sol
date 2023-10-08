@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {IERC20} from "./utils/IERC20.sol";
 import {IWETH} from "./utils/IWETH.sol";
@@ -121,7 +121,7 @@ contract Staking {
         // Record the staking start timestamp
         userStakingStartTimestamp[msg.sender] = block.timestamp;
 
-        // Mint receipt tokens (IY) with interest
+        // Mint receipt tokens with interest
         uint256 receiptAmount = calculateInterest(_amount);
         receiptToken.mint(msg.sender, receiptAmount);
 
